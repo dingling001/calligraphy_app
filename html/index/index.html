@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>首页</title>
+    <script src="../../assets/js/flexible.js"></script>
+    <link rel="stylesheet" href="../../assets/css/reset.css">
+    <link rel="stylesheet" href="https://unpkg.com/mint-ui@1/lib/style.css">
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_1070693_t0fdbg5ye8e.css">
+    <link rel="stylesheet" href="../../assets/css/swiper-3.4.2.min.css">
+    <style>
+        body {
+            background-color: #fff;
+        }
+
+        .index_box {
+            padding: 0 1rem;
+        }
+
+        .index_top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.3rem 10%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            z-index: 10;
+            width: 80%;
+            background-color: #fff;
+        }
+
+        .index_top input {
+            padding: 0.3rem;
+            flex: 1;
+            margin: 0 0.3rem;
+            background-color: #f5f5f5;
+            border-radius: 0.16rem;
+        }
+
+        .index_top .iconfont {
+            font-size: 18px;
+        }
+
+        .index_nav {
+            position: fixed;
+            width: 80%;
+            top: 1.5rem;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            padding: 0 10%;
+            z-index: 10;
+            background-color: #fff;
+        }
+
+        .index_nav .iconxiangyou {
+            position: absolute;
+            right: 10%;
+            top: 0.1rem;
+            background-color: #fff;
+            z-index: 11;
+            font-weight: bold;
+        }
+
+        .swiper-slide {
+            width: 20% !important;
+            text-align: center;
+        }
+
+        .swiper-slide span {
+            padding: 0.1rem 0;
+            display: inline-block;
+            border-bottom: 3px solid #fff;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .swiper-slide .active_nav {
+            border-bottom: 3px solid #f3242e;
+        }
+
+        .index_list {
+            margin: 2.6rem 0;
+        }
+
+        .index_title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 15px;
+            color: #222;
+            padding: 0.2rem 0;
+        }
+
+        .index_title .iconshanchu {
+            color: #f3242e;
+            font-size: 20px;
+        }
+
+        .index_img {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 0.16rem;
+        }
+
+        .index_img img {
+            width: 100%;
+        }
+
+        .del_box {
+            font-size: 10px;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            color: #d1d1d1;
+        }
+
+        .footer_nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 0.2rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            -webkit-box-shadow: 3px 2px 6px #000;
+            -moz-box-shadow: 3px 2px 6px #000;
+            box-shadow: 3px 2px 6px #000;
+            background-color: #fff;
+            z-index: 10;
+        }
+
+        .footer_nav a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            font-size: 14px;
+            color: #333;
+            flex: 1;
+            position: relative;
+        }
+        .footer_nav a .iconfont{
+            font-size: 20px;
+        }
+
+        .footer_nav .active_a {
+            color: #f3242e;
+        }
+        .min_footer{
+            position: absolute;
+            bottom: .15rem;
+            height: 1.5rem ;
+            width: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: #fff;
+            -webkit-box-shadow: 3px 2px 6px #000;
+            -moz-box-shadow: 3px 2px 6px #000;
+            box-shadow: 0px -3px 2px -1px #ccc;
+            z-index: -1;
+        }
+       .footer_nav .min_footer .iconfont{
+            font-size: 25px;
+        }
+        .min_text{
+            position: absolute;
+            bottom: -.05rem;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <div class="index_box">
+        <div class="index_top">
+            <div class="iconfont iconshijian"></div>
+            <input type="text" placeholder="请输入关键字">
+            <div class="iconfont iconscan"></div>
+        </div>
+        <div class="index_nav">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide" @click="nav(0)"><span :class="{'active_nav':i==0}">推荐</span></div>
+                    <div class="swiper-slide" @click="nav(1)"><span :class="{'active_nav':i==1}">书帖</span></div>
+                    <div class="swiper-slide" @click="nav(2)"><span :class="{'active_nav':i==2}">碑帖</span></div>
+                    <div class="swiper-slide" @click="nav(3)"><span :class="{'active_nav':i==3}">国画</span></div>
+                    <div class="swiper-slide" @click="nav(4)"><span :class="{'active_nav':i==4}">图书</span></div>
+                    <div class="swiper-slide" @click="nav(5)"><span :class="{'active_nav':i==5}">书法</span></div>
+                </div>
+            </div>
+            <div class="iconfont iconxiangyou"></div>
+        </div>
+        <div class="index_list">
+            <div class="index_iten">
+                <div class="index_img">
+                    <img src="../../assets/img/i.png" alt="">
+                </div>
+                <div class="index_title">
+                    <div>标题标题标题</div>
+                    <div class="del_box">
+                        <span class="iconfont iconshanchu"></span>
+                        <div>28.51MB</div>
+                    </div>
+                </div>
+            </div>
+            <div class="index_iten">
+                <div class="index_img">
+                    <img src="../../assets/img/i.png" alt="">
+                </div>
+                <div class="index_title">
+                    <div>标题标题标题</div>
+                    <div class="del_box">
+                        <span class="iconfont iconshanchu"></span>
+                        <div>28.51MB</div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="index_iten">
+                <div class="index_img">
+                    <img src="../../assets/img/i.png" alt="">
+                </div>
+                <div class="index_title">
+                    <div>标题标题标题</div>
+                    <div class="del_box">
+                        <span class="iconfont iconshanchu"></span>
+                        <div>28.51MB</div>
+                    </div>
+                </div>
+            </div>
+            <div class="index_iten">
+                <div class="index_img">
+                    <img src="../../assets/img/i.png" alt="">
+                </div>
+                <div class="index_title">
+                    <div>标题标题标题</div>
+                    <div class="del_box">
+                        <span class="iconfont iconshanchu"></span>
+                        <div>28.51MB</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer_nav">
+            <a href="" class="active_a">
+                <span class="iconfont iconshu"></span>
+                <span>碑帖</span>
+            </a>
+            <a href="">
+                <span class="iconfont iconwsdzb_zzgzt_dyfw_wxy_xyfl"></span>
+                <span>课程</span>
+            </a>
+            <a href="" style="height: 1rem">
+                <span class="min_footer"><span class="iconfont iconbimo"></span></span>
+                <span class="min_text">墨客先生</span>
+            </a>
+            <a href="">
+                <span class="iconfont iconzidianguanli"></span>
+                <span>字典</span>
+            </a>
+            <a href="">
+                <span class="iconfont iconwode1"></span>
+                <span>我的</span>
+            </a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<!-- 先引入 Vue -->
+<script src="https://unpkg.com/vue@1/dist/vue.js"></script>
+<!-- 引入组件库 -->
+<script src="https://unpkg.com/mint-ui@1/lib/index.js"></script>
+<script src="../../assets/js/swiper-3.4.2.min.js"></script>
+<script type="text/javascript">
+    var app = new Vue({
+        el: '#app',
+        data: {
+            i: 0,
+            listBanner: []
+        },
+        created: function () {
+            console.log(11)
+        },
+        watch: {
+            listBanner: function (val) {
+                var that = this;
+                setTimeout(function () {
+                    alert(1)
+                    var mySwiper = new Swiper('.swiper-container', {
+                        freeMode: true,
+                        slideToClickedSlide: true,
+                        observer: true,
+                        observeParents: true,
+                        slidesPerView: 'auto'
+                    })
+                }, 500);
+            },
+            // var mySwiper = new Swiper('.swiper-container', {
+            //
+            // })
+        },
+
+        methods: {
+            nav(index) {
+                this.i = index;
+            }
+        }
+    })
+    var mySwiper = new Swiper('.swiper-container', {
+        freeMode: true,
+        slideToClickedSlide: true,
+        observer: true,
+        observeParents: true,
+        slidesPerView: 'auto',
+        nextButton: '.iconxiangyou',
+    })
+</script>
+

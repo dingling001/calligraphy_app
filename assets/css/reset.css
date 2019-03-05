@@ -1,0 +1,63 @@
+/*
+ * 公共标签重置样式
+ */
+@charset "utf-8";
+
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td{padding:0;margin:0;}
+section,article,aside,header,footer,nav,dialog,figure,main{padding:0;margin:0;display:block;}
+/*设置默认字体*/
+body,button,input,select,textarea{font-size:12px;color:#333;background:#fff;border: none;}
+/*重置输入表单的字体大小和字体样式,使之继承父类字体*/
+h1,h2,h3,h4,h5,h6,input,textarea,select,button{font-size: 100%;font-family:inherit;}
+input,label,select,option,textarea,button,fieldset,legend{font-size:12px;}
+/*在获取焦点时，去掉外面蓝框，主要针对input、链接类型*/
+:focus{outline: 0;}
+/*去掉默认的点和序列号*/
+ul,ol,li{list-style:none;}
+/*按钮的样式设置为手型*/
+button,.submit{cursor:pointer;}
+textarea{resize:none;outline:none;}
+address,cite,dfn,em,var,i{font-style:normal;}
+/*去掉加粗*/
+h1,h2,h3,h4,h5,h6{font-weight:normal;}
+/*strong{font-weight:normal;}*/
+/*去掉默认边框和底部空白区*/
+img{border:none;vertical-align:middle;}
+/*去掉表格边框之间的间距*/
+table{border-collapse: collapse;border-spacing: 0;}
+/*遵循爱恨LVHA原则，设置链接和颜色和下划线*/
+a,a:link,a:visited,a:hover,a:active{text-decoration:none; cursor: pointer;}
+sup{vertical-align: super;}
+sub{vertical-align: sub;}
+mark{background:none;}
+/*input::-ms-clear{display:none;}*/
+input{background:none;border:none;}
+input,button,select,textarea{outline:0}
+
+/*常用css样式*/
+.mask{display: none;z-index: 100;position:fixed;top:0;left:0;width:100%;height:100%;background:#000;opacity:0.6;filter:alpha(opacity=60);}
+.clearfix{*zoom:1}
+.clearfix:after{clear:both;content: ".";display: block;height: 0;clear: both;visibility: hidden;}
+.fl{float:left;}
+.fr{float:right;}
+.none{display:none;}
+.show{display: block;}
+.noborder{border:0!important;}
+.clear{clear: both;}
+
+/*定位层*/
+.ps-fixed{position: fixed !important;top: 50%;left: 50%;z-index: 101;}
+.ps-absolute{position: absolute !important;top: 0;left: 0;z-index: 10;}
+.ps-relative{position: relative !important;top: 0;left: 0;z-index: 10;}
+.ps-static{position: static !important;}
+
+/*padding*/
+.pt0{padding-top: 0 !important;}
+*{
+    -webkit-tap-highlight-color: transparent;
+    touch-action: none;
+}
+[v-chock]{
+    display: none;
+}
+
